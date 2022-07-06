@@ -9,11 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/material": "^5.8.7",
+    "@usedapp/core": "^1.0.15",
+    "@walletconnect/web3-provider": "^1.7.8",
+    "@web3auth/web3auth": "^1.1.0",
+    "config": "^3.3.7",
+    "ethers": "^5.6.9",
+    "fs": "^0.0.1-security",
+    "magic-sdk": "^7.0.0",
+    "moralis": "^1.8.1",
     "next": "12.2.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-moralis": "^1.4.0",
+    "web3": "^1.7.4"
   },
   "devDependencies": {
+    "@types/config": "^0.0.41",
     "@types/node": "18.0.3",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
