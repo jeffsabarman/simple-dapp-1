@@ -2,10 +2,15 @@ import { Button, Grid, Typography, useTheme } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { UseAccount } from "../hooks/useAccount";
 import { useConnect } from "../hooks/useConnect";
+//* useDApp
+import { useEthers } from "@usedapp/core";
 
 export const MetamaskConnector = () => {
   const theme = useTheme();
-  const { onClickConnect, onClickConnectMoralis } = useConnect();
+  const { onClickConnect, onClickConnectMoralis, onClickConnectUseDApp } =
+    useConnect();
+
+  const { deactivate } = useEthers();
 
   const { address, balance } = UseAccount();
 
@@ -16,6 +21,7 @@ export const MetamaskConnector = () => {
       container
       // direction="column"
       spacing={3}
+      justifyContent="center"
       // alignItems="center"
       style={{
         padding: theme.spacing(12),
@@ -33,6 +39,15 @@ export const MetamaskConnector = () => {
           </Grid>
           <Grid item>
             <Typography color="white">Balance: {balance}</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Button
+              onClick={() => deactivate()}
+              color="error"
+              variant="contained"
+            >
+              Logout useDApp
+            </Button>
           </Grid>
         </>
       ) : (
@@ -52,7 +67,11 @@ export const MetamaskConnector = () => {
             </Button>
           </Grid>
           <Grid item>
-            <Button color="success" variant="contained">
+            <Button
+              onClick={onClickConnectUseDApp}
+              color="success"
+              variant="contained"
+            >
               Connect useDApp
             </Button>
           </Grid>

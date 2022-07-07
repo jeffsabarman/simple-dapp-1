@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import web3 from "../utils/web3Utils";
+//* Moralis
 import { useMoralis } from "react-moralis";
+//* useDApp
+import { useEthers } from "@usedapp/core";
 
 export function useConnect() {
   console.log(web3, "<< web3");
@@ -23,6 +26,8 @@ export function useConnect() {
   // ? Moralis
   const { authenticate, isAuthenticated, user } = useMoralis();
 
+  console.log(isAuthenticated, "<< isAuthenticated");
+
   const onClickConnectMoralis = async () => {
     if (!isAuthenticated) {
       try {
@@ -34,5 +39,11 @@ export function useConnect() {
     }
   };
 
-  return { onClickConnect, onClickConnectMoralis };
+  // ? useDApp
+  const { activateBrowserWallet } = useEthers();
+  const onClickConnectUseDApp = () => {
+    activateBrowserWallet();
+  };
+
+  return { onClickConnect, onClickConnectMoralis, onClickConnectUseDApp };
 }
